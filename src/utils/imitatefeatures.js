@@ -9,10 +9,10 @@ import Model from '../../ui/model.js';
 import Button from '../../ui/button/button.js';
 import ButtonView from '../../ui/button/buttonview.js';
 
-import Collection from '/ckeditor5/utils/collection.js';
+import Collection from '../../utils/collection.js';
 
-import ListDropdown from '/ckeditor5/ui/dropdown/list/listdropdown.js';
-import ListDropdownView from '/ckeditor5/ui/dropdown/list/listdropdownview.js';
+import ListDropdown from '../../ui/dropdown/list/listdropdown.js';
+import ListDropdownView from '../../ui/dropdown/list/listdropdownview.js';
 
 /**
  * Immitates that some features were loaded and did their job.
