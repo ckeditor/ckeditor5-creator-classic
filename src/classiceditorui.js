@@ -48,13 +48,14 @@ export default class ClassicEditorUI {
 
 		/**
 		 * Common balloon panel for each plugin which needs to be displayed
-		 * as contextual balloon panel.
+		 * as a contextual balloon panel.
 		 *
 		 * @member {module:ui/contextualballoon~ContextualBalloon} #balloon
 		 */
 		this.balloon = new ContextualBalloon( editor );
 		this.balloon.view = new BalloonPanelView( editor.locale );
 		view.body.add( this.balloon.view );
+		this.focusTracker.add( this.balloon.view.element );
 
 		// Set–up the view.
 		view.set( 'width', editor.config.get( 'ui.width' ) );

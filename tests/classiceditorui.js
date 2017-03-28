@@ -69,6 +69,14 @@ describe( 'ClassicEditorUI', () => {
 			expect( ui.view.body.getIndex( ui.balloon.view ) ).to.above( -1 );
 		} );
 
+		it( 'adds #balloon.view.element to #focusTrcker', () => {
+			expect( ui.focusTracker.isFocused ).to.false;
+
+			ui.balloon.view.element.dispatchEvent( new Event( 'focus' ) );
+
+			expect( ui.focusTracker.isFocused ).to.true;
+		} );
+
 		it( 'sets view#width and view#height', () => {
 			expect( view.width ).to.equal( 100 );
 			expect( view.height ).to.equal( 200 );
