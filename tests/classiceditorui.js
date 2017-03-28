@@ -14,6 +14,9 @@ import ClassicTestEditor from '@ckeditor/ckeditor5-core/tests/_utils/classictest
 
 import FocusTracker from '@ckeditor/ckeditor5-utils/src/focustracker';
 
+import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/contextualballoon';
+import BalloonPanelView from '@ckeditor/ckeditor5-ui/src/panel/balloon/balloonpanelview';
+
 import { keyCodes } from '@ckeditor/ckeditor5-utils/src/keyboard';
 import testUtils from '@ckeditor/ckeditor5-core/tests/_utils/utils';
 import utils from '@ckeditor/ckeditor5-utils/tests/_utils/utils';
@@ -58,6 +61,12 @@ describe( 'ClassicEditorUI', () => {
 
 		it( 'creates #focusTracker', () => {
 			expect( ui.focusTracker ).to.be.instanceOf( FocusTracker );
+		} );
+
+		it( 'creates #balloon', () => {
+			expect( ui.balloon ).to.instanceOf( ContextualBalloon );
+			expect( ui.balloon.view ).to.instanceof( BalloonPanelView );
+			expect( ui.view.body.getIndex( ui.balloon.view ) ).to.above( -1 );
 		} );
 
 		it( 'sets view#width and view#height', () => {
