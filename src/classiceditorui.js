@@ -9,6 +9,8 @@
 
 import ComponentFactory from '@ckeditor/ckeditor5-ui/src/componentfactory';
 import FocusTracker from '@ckeditor/ckeditor5-utils/src/focustracker';
+import ContextualBalloon from '@ckeditor/ckeditor5-ui/src/contextualballoon';
+import BalloonPanelView from '@ckeditor/ckeditor5-ui/src/panel/balloon/balloonpanelview';
 import enableToolbarKeyboardFocus from '@ckeditor/ckeditor5-ui/src/toolbar/enabletoolbarkeyboardfocus';
 
 /**
@@ -43,6 +45,17 @@ export default class ClassicEditorUI {
 		 * @inheritDoc
 		 */
 		this.focusTracker = new FocusTracker();
+
+		/**
+		 * Common balloon panel for each plugin which needs to be displayed
+		 * as a contextual balloon panel.
+		 *
+		 * @member {module:ui/contextualballoon~ContextualBalloon} #balloon
+		 */
+		this.balloon = new ContextualBalloon( editor );
+		this.balloon.view = new BalloonPanelView( editor.locale );
+		view.body.add( this.balloon.view );
+		this.focusTracker.add( this.balloon.view.element );
 
 		// Set–up the view.
 		view.set( 'width', editor.config.get( 'ui.width' ) );
