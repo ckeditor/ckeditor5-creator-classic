@@ -175,9 +175,14 @@ export default class ClassicEditor extends Editor {
 					.then( () => editor.ui.init( isElement( sourceElementOrData ) ? sourceElementOrData : null ) )
 					.then( () => {
 						if ( !isElement( sourceElementOrData ) && config.initialData ) {
+							/**
+							 * Configuration parameter `initialData` cannot be used together with initial data passed in `Editor#create()`.
+							 *
+							 * @error editor-create-initial-data
+							 */
 							throw new CKEditorError(
 								'editor-create-initial-data: ' +
-								'EditorConfig#initialData cannot be used together with initial data passed in Editor#create()'
+								'Configuration parameter initialData cannot be used together with initial data passed in Editor#create()'
 							);
 						}
 
