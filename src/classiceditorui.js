@@ -139,6 +139,7 @@ export default class ClassicEditorUI extends EditorUI {
 		const editor = this.editor;
 		const view = this.view;
 		const editingView = editor.editing.view;
+		const toolbar = view.toolbar;
 
 		// Set–up the sticky panel with toolbar.
 		view.stickyPanel.bind( 'isActive' ).to( this.focusTracker, 'isFocused' );
@@ -148,7 +149,9 @@ export default class ClassicEditorUI extends EditorUI {
 			view.stickyPanel.viewportTopOffset = this._toolbarConfig.viewportTopOffset;
 		}
 
-		view.toolbar.fillFromConfig( this._toolbarConfig.items, this.componentFactory );
+		toolbar.fillFromConfig( this._toolbarConfig.items, this.componentFactory );
+
+		toolbar.label = editor.t( this._toolbarConfig.label );
 
 		enableToolbarKeyboardFocus( {
 			origin: editingView,
